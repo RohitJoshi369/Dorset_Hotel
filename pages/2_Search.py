@@ -9,24 +9,39 @@ Original file is located at
 
 import streamlit as st
 
+# -------------------------------
+# Page Title
+# -------------------------------
 st.title("🔍 Search Bhagat")
 
+# -------------------------------
+# Check if CSV is uploaded
+# -------------------------------
 if "data" not in st.session_state:
     st.warning("Please upload a CSV file first.")
     st.stop()
 
 df = st.session_state["data"]
 
-bhagat_name = st.text_input("Enter Bhagat Name")
+# -------------------------------
+# Search Input
+# -------------------------------
+bhagat_name = st.text_input("Enter Bhagat Name (Exact match)")
 
+# -------------------------------
+# Search Logic (EXACT MATCH)
+# -------------------------------
 if bhagat_name.strip():
     search = bhagat_name.strip().lower()
 
     result = df[
-        df["Bhagat Name 1"].astype(str).str.strip().str.lower().str.contains(search, na=False) |
-        df["Bhagat Name 2"].astype(str).str.strip().str.lower().str.contains(search, na=False)
+        (df["Bhagat Name 1"].astype(str).str.strip().str.lower() == search) |
+        (df["Bhagat Name 2"].astype(str).str.strip().str.lower() == search)
     ]
 
+    # -------------------------------
+    # Display Results
+    # -------------------------------
     if result.empty:
         st.error("Bhagat not found ❌")
     else:
