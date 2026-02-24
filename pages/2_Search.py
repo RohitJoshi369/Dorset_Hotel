@@ -26,7 +26,7 @@ df = st.session_state["data"]
 # -------------------------------
 # Search Input
 # -------------------------------
-bhagat_name = st.text_input("Enter Bhagat Name (Exact match)")
+bhagat_name = st.text_input("Enter Bhagat Name Used in Registration")
 
 # -------------------------------
 # Search Logic (EXACT MATCH)
