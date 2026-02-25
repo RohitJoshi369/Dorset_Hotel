@@ -16,9 +16,8 @@ st.title("🙏🏻 Dorset Shibir Accomodation 🔍")
 # 🔹 Add image
 st.image(
     "logo.png",
-    width=300
+    width=180
 )
-
 
 
 if st.session_state.get("logged_in"):
