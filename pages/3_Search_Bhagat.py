@@ -8,7 +8,6 @@ Original file is located at
 """
 
 import streamlit as st
-from auth import require_role
 from database import search_bhagat
 
 # Role guard (uploader + searcher allowed)
