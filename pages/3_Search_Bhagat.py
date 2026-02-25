@@ -8,25 +8,18 @@ Original file is located at
 """
 
 import streamlit as st
+from auth import require_role
 from database import search_bhagat
 
+# Role guard (uploader + searcher allowed)
+require_role("searcher")
+
 st.title("🔍 Search Bhagat")
-
-# Access control
-if not st.session_state.get("logged_in"):
-    st.warning("Please login first.")
-    st.stop()
-
-if st.session_state.get("role") != "searcher":
-    st.error("⛔ Access denied. Search team only.")
-    st.stop()
 
 bhagat_name = st.text_input("Enter Bhagat Name (Exact match)")
 
 if bhagat_name.strip():
-    search = bhagat_name.strip().lower()
-
-    result = search_bhagat(search)
+    result = search_bhagat(bhagat_name.strip().lower())
 
     if result.empty:
         st.error("Bhagat not found ❌")
