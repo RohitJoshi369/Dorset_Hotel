@@ -19,7 +19,7 @@ if not st.session_state.get("logged_in"):
     st.stop()
 
 if st.session_state.get("role") != "uploader":
-    st.error("⛔ Access denied. Upload team only.")
+    st.error("⛔ Access denied. Accomodation only.")
     st.stop()
 
 uploaded_file = st.file_uploader("Upload CSV File", type=["csv"])
