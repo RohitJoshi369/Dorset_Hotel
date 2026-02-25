@@ -14,13 +14,7 @@ def require_role(required_role: str):
     # Not logged in
     # -------------------------------
     if not st.session_state.get("logged_in"):
-        st.warning("Please login first.")
-
-        st.page_link(
-            "Login",              # ✅ page name, not file path
-            label="🔐 Go to Login",
-            icon="➡️"
-        )
+        st.warning("Please login first using the Login page from the sidebar.")
         st.stop()
 
     user_role = st.session_state.get("role")
@@ -41,12 +35,5 @@ def require_role(required_role: str):
     # Access denied
     # -------------------------------
     st.error("⛔ Access denied")
-
-    st.page_link(
-        "Search Bhagat",         # unchanged
-        label="🔍 Go to Search",
-        icon="➡️"
-    )
-
-    st.stop()
+    st.info("Please use the Search Bhagat page from the sidebar.")
     st.stop()
