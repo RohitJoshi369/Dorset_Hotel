@@ -16,25 +16,23 @@ def require_role(required_role: str):
     if not st.session_state.get("logged_in"):
         st.warning("Please login first.")
 
-        # ✅ Use PAGE NAME, not file path
         st.page_link(
-            "Login",
+            "Login",              # ✅ page name, not file path
             label="🔐 Go to Login",
             icon="➡️"
         )
-
         st.stop()
 
     user_role = st.session_state.get("role")
 
     # -------------------------------
-    # Uploader can access everything
+    # Uploader can access EVERYTHING
     # -------------------------------
     if user_role == "uploader":
         return
 
     # -------------------------------
-    # Searcher can access search pages
+    # Searcher can access search only
     # -------------------------------
     if required_role == "searcher" and user_role == "searcher":
         return
@@ -45,9 +43,10 @@ def require_role(required_role: str):
     st.error("⛔ Access denied")
 
     st.page_link(
-        "Search Bhagat",
+        "Search Bhagat",         # unchanged
         label="🔍 Go to Search",
         icon="➡️"
     )
 
+    st.stop()
     st.stop()
