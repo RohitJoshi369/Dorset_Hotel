@@ -9,11 +9,14 @@ Original file is located at
 
 import streamlit as st
 
-st.set_page_config(
-    page_title="Bhagat Search",
-    layout="centered"
-)
+st.set_page_config(page_title="Bhagat Search", layout="centered")
 
 st.title("🔍 Bhagat Search Application")
-st.write("Use the sidebar to upload CSV and search Bhagat")
-st.info("Select a page from the sidebar ⬅️")
+
+if st.session_state.get("logged_in"):
+    st.sidebar.success(
+        f"Logged in as {st.session_state['user']} "
+        f"({st.session_state['role']})"
+    )
+else:
+    st.sidebar.info("Please login")
