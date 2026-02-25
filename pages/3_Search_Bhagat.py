@@ -11,6 +11,8 @@ import streamlit as st
 from auth import require_role
 from database import search_bhagat
 
+st.title("🔍 Search Bhagat")
+
 # Role guard (uploader + searcher allowed)
 require_role("searcher")
 
