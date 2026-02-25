@@ -9,16 +9,24 @@ Original file is located at
 
 import streamlit as st
 
-def require_role(role: str):
+def require_role(required_role: str):
+    # Not logged in → go to login
     if not st.session_state.get("logged_in"):
         st.warning("Please login first.")
         st.switch_page("pages/1_Login.py")
 
-    if st.session_state.get("role") != role:
-        # Redirect based on role
-        if st.session_state.get("role") == "searcher":
-            st.switch_page("pages/3_Search_Bhagat.py")
-        elif st.session_state.get("role") == "uploader":
-            st.switch_page("pages/2_Accomodation.py")
-        else:
-            st.switch_page("pages/1_Login.py")
+    user_role = st.session_state.get("role")
+
+    # Uploader has access to EVERYTHING
+    if user_role == "uploader":
+        return
+
+    # Searcher can access ONLY search pages
+    if required_role == "searcher" and user_role == "searcher":
+        return
+
+    # Otherwise → redirect
+    if user_role == "searcher":
+        st.switch_page("pages/3_Search_Bhagat.py")
+    else:
+        st.switch_page("pages/1_Login.py")
