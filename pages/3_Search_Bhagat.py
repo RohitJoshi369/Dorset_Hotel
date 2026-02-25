@@ -16,8 +16,6 @@ st.title("🔍 Search Bhagat")
 # Role guard (uploader + searcher allowed)
 require_role("searcher")
 
-st.title("🔍 Search Bhagat")
-
 bhagat_name = st.text_input("Enter Bhagat Name (Exact match)")
 
 if bhagat_name.strip():
