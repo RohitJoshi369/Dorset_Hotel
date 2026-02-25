@@ -16,7 +16,7 @@ st.title("🔐 Login")
 # -------------------------------
 USERS = {
     "upload_team": {
-        "password": "upload123",
+        "password": "Prabodham3690",
         "role": "uploader"
     },
     "search_team": {
