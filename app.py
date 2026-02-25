@@ -11,7 +11,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Bhagat Search", layout="centered")
 
-st.title("🔍 Bhagat Search Application")
+st.title("🔍 Dorset Shibir Accomodation")
 
 if st.session_state.get("logged_in"):
     st.sidebar.success(
