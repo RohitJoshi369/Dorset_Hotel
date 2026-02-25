@@ -11,7 +11,7 @@ import streamlit as st
 import pandas as pd
 from database import create_table, insert_csv
 
-st.title("Accomodation")
+st.title("🏫 Accomodation")
 
 # Access control
 if not st.session_state.get("logged_in"):
