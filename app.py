@@ -14,7 +14,7 @@ st.set_page_config(page_title="Bhagat Search", layout="centered")
 # 🔹 Add image
 st.image(
     "logo.png",
-    width=580
+    width=280
 )
 
 st.title("🙏🏻 Dorset Shibir Accomodation 🔍")
