@@ -11,12 +11,6 @@ import streamlit as st
 
 st.set_page_config(page_title="Bhagat Search", layout="centered")
 
-# 🔹 Add image
-st.image(
-    "logo.png",
-    width=500
-)
-
 st.title("🙏🏻 Dorset Shibir Accomodation 🔍")
 
 if st.session_state.get("logged_in"):
