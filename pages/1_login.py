@@ -19,8 +19,8 @@ USERS = {
         "password": "Prabodham3690",
         "role": "uploader"
     },
-    "search_team": {
-        "password": "search123",
+    "Hotel": {
+        "password": "Hotel123",
         "role": "searcher"
     }
 }
