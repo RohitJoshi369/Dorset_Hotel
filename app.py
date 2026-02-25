@@ -16,7 +16,7 @@ st.title("🙏🏻 Dorset Shibir Accomodation 🔍")
 # 🔹 Add image
 st.image(
     "logo.png",
-    width=180
+    width=290
 )
 
 
