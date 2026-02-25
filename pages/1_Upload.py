@@ -9,12 +9,22 @@ Original file is located at
 
 import streamlit as st
 import pandas as pd
+from database import create_table, insert_csv
 
-st.title("📤 Upload CSV File")
+st.title("📤 Upload CSV")
 
-uploaded_file = st.file_uploader("Upload CSV File (.csv)", type=["csv"])
+# Access control
+if not st.session_state.get("logged_in"):
+    st.warning("Please login first.")
+    st.stop()
 
-if uploaded_file is not None:
+if st.session_state.get("role") != "uploader":
+    st.error("⛔ Access denied. Upload team only.")
+    st.stop()
+
+uploaded_file = st.file_uploader("Upload CSV File", type=["csv"])
+
+if uploaded_file:
     try:
         df = pd.read_csv(uploaded_file)
 
@@ -28,9 +38,9 @@ if uploaded_file is not None:
         if not all(col in df.columns for col in required_columns):
             st.error("CSV file does not contain required columns.")
         else:
-            st.session_state["data"] = df
-            st.success("CSV uploaded successfully ✅")
-            st.write("➡️ Go to **Search Bhagat** page")
+            create_table()
+            insert_csv(df)
+            st.success("CSV stored in database successfully ✅")
 
     except Exception as e:
-        st.error(f"Error reading file: {e}")
+        st.error(f"Error: {e}")
