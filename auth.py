@@ -19,6 +19,6 @@ def require_role(role: str):
         if st.session_state.get("role") == "searcher":
             st.switch_page("pages/3_Search_Bhagat.py")
         elif st.session_state.get("role") == "uploader":
-            st.switch_page("pages/2_Upload_CSV.py")
+            st.switch_page("pages/2_Accomodation.py")
         else:
             st.switch_page("pages/1_Login.py")
